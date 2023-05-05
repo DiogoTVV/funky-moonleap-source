@@ -1,0 +1,8 @@
+firstDeath 0 38
+deathLoop 0 0
+danceRight 0 0
+singRIGHT -40 -24
+singDOWN -42 -63
+danceLeft 0 0
+singLEFT 74 -25
+singUP -20 68

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="guselect-gf.png">
+	<!-- Created with Adobe Animate version 18.0.0.107 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Idle0000" x="2" y="2" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0001" x="2" y="2" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0002" x="654" y="2" width="682" height="573" frameX="0" frameY="-11" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0003" x="654" y="2" width="682" height="573" frameX="0" frameY="-11" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0004" x="1341" y="2" width="670" height="575" frameX="-6" frameY="-9" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0005" x="1341" y="2" width="670" height="575" frameX="-6" frameY="-9" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0006" x="2" y="591" width="650" height="582" frameX="-18" frameY="-2" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0007" x="2" y="591" width="650" height="582" frameX="-18" frameY="-2" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0008" x="657" y="591" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0009" x="657" y="591" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0010" x="2" y="2" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0011" x="2" y="2" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0012" x="2" y="2" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+	<SubTexture name="Idle0013" x="2" y="2" width="647" height="584" frameX="-19" frameY="0" frameWidth="682" frameHeight="584"/>
+</TextureAtlas>

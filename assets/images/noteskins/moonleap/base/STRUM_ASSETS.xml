@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="STRUM_ASSETS.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="arrowDOWN0000" x="3" y="3" width="233" height="233"/>
+	<SubTexture name="arrowDOWNglow0000" x="239" y="3" width="268" height="264"/>
+	<SubTexture name="arrowDOWNglow0001" x="510" y="3" width="262" height="258" frameX="-3" frameY="-3" frameWidth="268" frameHeight="264"/>
+	<SubTexture name="arrowDOWNglow0002" x="3" y="270" width="262" height="258" frameX="-3" frameY="-3" frameWidth="268" frameHeight="264"/>
+	<SubTexture name="arrowDOWNglow0003" x="3" y="270" width="262" height="258" frameX="-3" frameY="-3" frameWidth="268" frameHeight="264"/>
+	<SubTexture name="arrowDOWNpressed 0000" x="268" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0001" x="268" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0002" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0003" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0004" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0005" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0006" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0007" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0008" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0009" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0010" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0011" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0012" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0013" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0014" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0015" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0016" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0017" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0018" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowDOWNpressed 0019" x="504" y="270" width="233" height="233"/>
+	<SubTexture name="arrowLEFT0000" x="740" y="270" width="233" height="233"/>
+	<SubTexture name="arrowLEFTglow0000" x="3" y="531" width="264" height="268"/>
+	<SubTexture name="arrowLEFTglow0001" x="270" y="531" width="258" height="262" frameX="-3" frameY="-3" frameWidth="264" frameHeight="268"/>
+	<SubTexture name="arrowLEFTglow0002" x="531" y="531" width="258" height="262" frameX="-3" frameY="-3" frameWidth="264" frameHeight="268"/>
+	<SubTexture name="arrowLEFTglow0003" x="531" y="531" width="258" height="262" frameX="-3" frameY="-3" frameWidth="264" frameHeight="268"/>
+	<SubTexture name="arrowLEFTpressed0000" x="3" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0001" x="3" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0002" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0003" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0004" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0005" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0006" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0007" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0008" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0009" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0010" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0011" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0012" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0013" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0014" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0015" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0016" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0017" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0018" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowLEFTpressed0019" x="239" y="802" width="233" height="233"/>
+	<SubTexture name="arrowRIGHT0000" x="475" y="802" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTglow0000" x="711" y="802" width="264" height="268"/>
+	<SubTexture name="arrowRIGHTglow0001" x="3" y="1073" width="258" height="262" frameX="-3" frameY="-3" frameWidth="264" frameHeight="268"/>
+	<SubTexture name="arrowRIGHTglow0002" x="264" y="1073" width="258" height="262" frameX="-3" frameY="-3" frameWidth="264" frameHeight="268"/>
+	<SubTexture name="arrowRIGHTglow0003" x="264" y="1073" width="258" height="262" frameX="-3" frameY="-3" frameWidth="264" frameHeight="268"/>
+	<SubTexture name="arrowRIGHTpressed0000" x="525" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0001" x="525" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0002" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0003" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0004" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0005" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0006" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0007" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0008" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0009" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0010" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0011" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0012" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0013" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0014" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0015" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0016" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0017" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0018" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowRIGHTpressed0019" x="761" y="1073" width="233" height="233"/>
+	<SubTexture name="arrowUP0000" x="3" y="1338" width="233" height="233"/>
+	<SubTexture name="arrowUPglow0000" x="239" y="1338" width="268" height="264"/>
+	<SubTexture name="arrowUPglow0001" x="510" y="1338" width="262" height="258" frameX="-3" frameY="-3" frameWidth="268" frameHeight="264"/>
+	<SubTexture name="arrowUPglow0002" x="3" y="1605" width="262" height="258" frameX="-3" frameY="-3" frameWidth="268" frameHeight="264"/>
+	<SubTexture name="arrowUPglow0003" x="3" y="1605" width="262" height="258" frameX="-3" frameY="-3" frameWidth="268" frameHeight="264"/>
+	<SubTexture name="arrowUPpressed0000" x="268" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0001" x="268" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0002" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0003" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0004" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0005" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0006" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0007" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0008" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0009" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0010" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0011" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0012" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0013" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0014" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0015" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0016" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0017" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0018" x="504" y="1605" width="233" height="233"/>
+	<SubTexture name="arrowUPpressed0019" x="504" y="1605" width="233" height="233"/>
+</TextureAtlas>

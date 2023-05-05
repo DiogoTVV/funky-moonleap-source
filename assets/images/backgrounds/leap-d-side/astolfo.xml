@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="astolfo.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Astolfo0000" x="3" y="3" width="136" height="127" frameX="-36" frameY="-45" frameWidth="200" frameHeight="205"/>
+	<SubTexture name="Astolfo0001" x="142" y="3" width="200" height="120" frameX="0" frameY="-49" frameWidth="200" frameHeight="205"/>
+	<SubTexture name="Astolfo0002" x="345" y="3" width="159" height="130" frameX="-14" frameY="-46" frameWidth="200" frameHeight="205"/>
+	<SubTexture name="Astolfo0003" x="3" y="136" width="162" height="205" frameX="-20" frameY="0" frameWidth="200" frameHeight="205"/>
+	<SubTexture name="Astolfo0004" x="168" y="136" width="192" height="168" frameX="-4" frameY="-24" frameWidth="200" frameHeight="205"/>
+</TextureAtlas>

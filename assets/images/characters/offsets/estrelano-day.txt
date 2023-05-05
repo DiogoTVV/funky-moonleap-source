@@ -1,0 +1,8 @@
+pre-jumpPost 42 0
+pre-jump 42 0
+idle 0 0
+singDOWN 76 -63
+singRIGHT -12 -7
+jump 57 76
+singLEFT 103 0
+singUP 39 43

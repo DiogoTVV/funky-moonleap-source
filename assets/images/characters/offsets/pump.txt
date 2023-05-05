@@ -1,0 +1,14 @@
+deathLoop -98 -129
+sunglass -4 1
+singRIGHTmiss -61 1
+singDOWN -40 -38
+singLEFTmiss -31 1
+singUP -33 11
+hey -15 9
+idle 0 0
+firstDeath -28 14
+deathConfirm -97 -127
+singRIGHT -62 0
+singDOWNmiss -38 -39
+singLEFT -33 -2
+singUPmiss -30 18

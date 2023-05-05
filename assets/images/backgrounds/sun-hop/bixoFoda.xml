@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bixoFoda.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="idle green0000" x="3" y="3" width="467" height="374"/>
+	<SubTexture name="idle green0001" x="3" y="3" width="467" height="374"/>
+	<SubTexture name="idle green0002" x="473" y="3" width="467" height="374"/>
+	<SubTexture name="idle green0003" x="473" y="3" width="467" height="374"/>
+	<SubTexture name="idle green0004" x="943" y="3" width="467" height="374"/>
+	<SubTexture name="idle green0005" x="943" y="3" width="467" height="374"/>
+	<SubTexture name="idle orange0000" x="1413" y="3" width="467" height="374"/>
+	<SubTexture name="idle orange0001" x="1413" y="3" width="467" height="374"/>
+	<SubTexture name="idle orange0002" x="3" y="380" width="467" height="374"/>
+	<SubTexture name="idle orange0003" x="3" y="380" width="467" height="374"/>
+	<SubTexture name="idle orange0004" x="473" y="380" width="467" height="374"/>
+	<SubTexture name="idle orange0005" x="473" y="380" width="467" height="374"/>
+	<SubTexture name="walk green0000" x="943" y="380" width="467" height="374"/>
+	<SubTexture name="walk green0001" x="943" y="380" width="467" height="374"/>
+	<SubTexture name="walk green0002" x="1413" y="380" width="467" height="374"/>
+	<SubTexture name="walk green0003" x="1413" y="380" width="467" height="374"/>
+	<SubTexture name="walk green0004" x="3" y="757" width="467" height="374"/>
+	<SubTexture name="walk green0005" x="3" y="757" width="467" height="374"/>
+	<SubTexture name="walk green0006" x="473" y="757" width="467" height="374"/>
+	<SubTexture name="walk green0007" x="473" y="757" width="467" height="374"/>
+	<SubTexture name="walk orange0000" x="943" y="757" width="467" height="374"/>
+	<SubTexture name="walk orange0001" x="943" y="757" width="467" height="374"/>
+	<SubTexture name="walk orange0002" x="1413" y="757" width="467" height="374"/>
+	<SubTexture name="walk orange0003" x="1413" y="757" width="467" height="374"/>
+	<SubTexture name="walk orange0004" x="3" y="1134" width="467" height="374"/>
+	<SubTexture name="walk orange0005" x="3" y="1134" width="467" height="374"/>
+	<SubTexture name="walk orange0006" x="473" y="1134" width="467" height="374"/>
+	<SubTexture name="walk orange0007" x="473" y="1134" width="467" height="374"/>
+</TextureAtlas>

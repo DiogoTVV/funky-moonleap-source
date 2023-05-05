@@ -1,0 +1,11 @@
+spooky-dance -67 1
+singDOWN -74 -23
+singRIGHTmiss -91 -2
+singUP -67 25
+singLEFTmiss -18 5
+hey -70 18
+idle 0 0
+singDOWNmiss -68 -23
+singRIGHT -90 -1
+singUPmiss -65 37
+singLEFT -11 2

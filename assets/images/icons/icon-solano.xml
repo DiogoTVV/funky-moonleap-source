@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="icon-solano.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="icon-neutral0000" x="3" y="3" width="150" height="150"/>
+	<SubTexture name="icon-neutral0001" x="3" y="3" width="150" height="150"/>
+	<SubTexture name="icon-neutral0002" x="156" y="3" width="150" height="150"/>
+	<SubTexture name="icon-neutral0003" x="156" y="3" width="150" height="150"/>
+	<SubTexture name="icon-neutral0004" x="309" y="3" width="150" height="150"/>
+	<SubTexture name="icon-neutral0005" x="309" y="3" width="150" height="150"/>
+	<SubTexture name="icon-neutral0006" x="3" y="156" width="150" height="150"/>
+	<SubTexture name="icon-neutral0007" x="3" y="156" width="150" height="150"/>
+	<SubTexture name="icon-neutral0008" x="156" y="156" width="150" height="150"/>
+	<SubTexture name="icon-neutral0009" x="156" y="156" width="150" height="150"/>
+	<SubTexture name="icon-neutral0010" x="309" y="156" width="150" height="150"/>
+	<SubTexture name="icon-neutral0011" x="309" y="156" width="150" height="150"/>
+	<SubTexture name="icon-neutral0012" x="3" y="309" width="150" height="150"/>
+	<SubTexture name="icon-neutral0013" x="3" y="309" width="150" height="150"/>
+	<SubTexture name="icon-neutral0014" x="156" y="309" width="150" height="150"/>
+	<SubTexture name="icon-neutral0015" x="156" y="309" width="150" height="150"/>
+	<SubTexture name="icon-losing0000" x="309" y="309" width="150" height="150"/>
+	<SubTexture name="icon-losing0001" x="309" y="309" width="150" height="150"/>
+	<SubTexture name="icon-losing0002" x="3" y="462" width="150" height="150"/>
+	<SubTexture name="icon-losing0003" x="3" y="462" width="150" height="150"/>
+	<SubTexture name="icon-losing0004" x="156" y="462" width="150" height="150"/>
+	<SubTexture name="icon-losing0005" x="156" y="462" width="150" height="150"/>
+</TextureAtlas>

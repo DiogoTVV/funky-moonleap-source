@@ -1,0 +1,13 @@
+tutorialzinho de como fazer seus proprios jsons
+
+step = o step que a velocidade vai mudar
+vel = o valor da nova velocidade (entre 0.1 ate 10.0)
+
+{
+  "data": [
+    [step1, vel1],
+    [step2, vel2]
+  ]
+}
+
+é só isso mesmo

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cursor.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cursor0000" x="3" y="3" width="50" height="50"/>
+	<SubTexture name="cursor0001" x="3" y="3" width="50" height="50"/>
+	<SubTexture name="cursor0002" x="3" y="3" width="50" height="50"/>
+	<SubTexture name="cursor0003" x="56" y="3" width="48" height="49" frameX="-1" frameY="0" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="cursor0004" x="56" y="3" width="48" height="49" frameX="-1" frameY="0" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="cursor0005" x="56" y="3" width="48" height="49" frameX="-1" frameY="0" frameWidth="50" frameHeight="50"/>
+	<SubTexture name="cursor0006" x="107" y="3" width="50" height="50"/>
+	<SubTexture name="cursor0007" x="107" y="3" width="50" height="50"/>
+	<SubTexture name="cursor0008" x="107" y="3" width="50" height="50"/>
+</TextureAtlas>
