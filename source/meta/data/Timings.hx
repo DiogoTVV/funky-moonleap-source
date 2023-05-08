@@ -106,6 +106,7 @@ class Timings
 
 	public static function getAccuracy()
 	{
+		if(trueAccuracy >= 99.989) trueAccuracy = 100;
 		return FlxMath.bound(trueAccuracy, 0, 100);
 	}
 

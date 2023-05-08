@@ -459,16 +459,21 @@ class PlayState extends MusicBeatState
 			
 			case 'sun-hop'|'devlog':
 				var effectColor = FlxColor.fromRGB(236,157,0);
-				if(SONG.song.toLowerCase() == 'devlog')
-					effectColor = CoolUtil.getIconColor('guselect');
+				if(curSong == 'devlog')
+					effectColor = FlxColor.WHITE;
 				
-				sunHopEffect = FlxGradient.createGradientFlxSprite(Std.int(FlxG.width * 1.2), Std.int(FlxG.height * 1.2),
-																[0x0, effectColor], 1, -90);
+				sunHopEffect =
+				FlxGradient.createGradientFlxSprite(Std.int(FlxG.width * 1.2), Std.int(FlxG.height * 1.2), [0x0, effectColor], 1, -90);
 				sunHopEffect.cameras = [strumHUD[strumHUD.length - 1]];
 				sunHopEffect.screenCenter();
 				sunHopEffect.blend = ADD;
 				sunHopEffect.alpha = 0;
 				add(sunHopEffect);
+				
+				/*if(curSong == 'devlog')
+					sunHopEffect.color = FlxColor.fromRGB(28,203,110);*/
+				
+				if(!SaveData.trueSettings.get('Flashing Lights')) sunHopEffect.visible = false;
 		}
 		
 		var creditSong:String = curSong;
@@ -670,7 +675,7 @@ class PlayState extends MusicBeatState
 					
 					if((!isJumping || finishedJump) && storyDifficulty == 0 && canPause && !autoplay)
 						midnightJump();
-				
+					
 				default:
 					var chars:Array<Character> = [boyfriend];
 					if(pump != null) chars.push(pump);
@@ -1254,8 +1259,8 @@ class PlayState extends MusicBeatState
 					// call updated accuracy stuffs
 					if (coolNote.parentNote != null)
 					{
-						//Timings.updateAccuracy(100, true, coolNote.parentNote.childrenNotes.length);
-						//Timings.updateAccuracy(100);
+						// Timings.updateAccuracy(100, true, coolNote.parentNote.childrenNotes.length);
+						Timings.updateAccuracy(100);
 						healthCall(100 / coolNote.parentNote.childrenNotes.length);
 					}
 				}
@@ -2305,6 +2310,14 @@ class PlayState extends MusicBeatState
 		}, 5);
 	}
 	
+	var curDevlogColor:Int = 0;
+	var devlogColors:Array<Array<Int>> = [
+		[28,203,110],  // green
+		[175,102,206], // ourple
+		[243,255,110], // yellow
+		[175,102,206], // ourple
+	];
+	
 	function stepSongEvents(daSong:String):Void
 	{
 		if(daSong == 'leap')
@@ -2423,8 +2436,8 @@ class PlayState extends MusicBeatState
 				case 2464:
 					changeCharZoom();
 					blackBars.enabled = true;
-				case 3484: // 3488
-					FlxTween.tween(PlayState, {defaultCamZoom: 1.2}, (262.54 - 251));
+				/*case 3488:
+					FlxTween.tween(PlayState, {defaultCamZoom: 1.2}, (262.54 - 251));*/
 				case 3616:
 					defaultCamZoom = 0.7;
 					flashCamera(camGame, getBeatSec() * 12);
@@ -2437,6 +2450,10 @@ class PlayState extends MusicBeatState
 				case 1984|2048|2112|3040|3104|3168|3232:
 					changeCharZoom();
 					blackBars.enabled = false;
+			}
+			if(curStep >= 3488 && curStep < 3616)
+			{
+				defaultCamZoom += (0.05) / 4;
 			}
 		}
 		
@@ -2490,7 +2507,7 @@ class PlayState extends MusicBeatState
 					boyfriend.charData.charZoom = 0.1;
 				case 2064:
 					changeCharZoom(0.1);
-					FlxTween.tween(sunHopEffect, {alpha: 0.6}, getBeatSec() * 4);
+					FlxTween.tween(sunHopEffect, {alpha: 0.6}, getBeatSec());
 				case 2192:
 					blackBars.enabled = true;
 				case 2320:
@@ -2502,6 +2519,16 @@ class PlayState extends MusicBeatState
 					changeCharZoom();
 					defaultCamZoom = 0.8;
 					flashCamera(camGame, getBeatSec() * 8);
+			}
+			
+			if(curStep >= 2064 + 4 && curStep < 2320)
+			{
+				if(curStep % 8 == 0)
+				{
+					//trace('era pra mudar');
+					curDevlogColor = FlxMath.wrap(curDevlogColor + 1, 0, devlogColors.length - 1);
+					FlxTween.color(sunHopEffect, getStepSec() * 3, sunHopEffect.color, CoolUtil.arrayToColor(devlogColors[curDevlogColor]));
+				}
 			}
 		}
 		

@@ -754,7 +754,7 @@ class Controls extends FlxActionSet
 			Control.UI_UP	=> [DPAD_UP, 	LEFT_STICK_DIGITAL_UP],
 			Control.UI_RIGHT=> [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
 			// extra buttons
-			Control.ACCEPT 	=> [A, X, START],
+			Control.ACCEPT 	=> [A, X],
 			Control.ACTION 	=> [A, X],
 			Control.BACK 	=> [B],
 			Control.PAUSE 	=> [START],
@@ -771,7 +771,7 @@ class Controls extends FlxActionSet
 			Control.UI_UP 	=> [DPAD_UP, 	LEFT_STICK_DIGITAL_UP],
 			Control.UI_RIGHT=> [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
 			// Swap A and B // Y and X for switch
-			Control.ACCEPT 	=> [B, Y, START],
+			Control.ACCEPT 	=> [B, Y],
 			Control.ACTION 	=> [B, Y],
 			Control.BACK 	=> [A],
 			Control.PAUSE 	=> [START],

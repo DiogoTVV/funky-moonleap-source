@@ -59,8 +59,6 @@ class ChartLoader
 						if (songNotes[1] > 3)
 							gottaHitNote = !section.mustHitSection;
 						
-						if(gottaHitNote) daStrumTime -= 1;
-						
 						// define the note that comes before (previous note)
 						var oldNote:Note = null;
 						if (unspawnNotes.length > 0) // if it exists, that is

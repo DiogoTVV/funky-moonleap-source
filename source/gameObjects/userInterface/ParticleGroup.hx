@@ -2,8 +2,10 @@ package gameObjects.userInterface;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.FlxCamera;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
+import shaders.MosaicShader;
 
 class ParticleGroup extends FlxSpriteGroup
 {
@@ -14,12 +16,7 @@ class ParticleGroup extends FlxSpriteGroup
 		super();
 		for(i in 0...maxParticles)
 		{
-			var part = new FlxSprite(FlxG.random.int(0, FlxG.width), FlxG.random.int(0, FlxG.height));
-			part.makeGraphic(1, 1, FlxColor.WHITE);
-			part.antialiasing = false;
-			part.velocity.x = FlxG.random.float(-30, 30);
-			part.velocity.y = FlxG.random.float(-30, 30);
-			renewParticle(part);
+			var part = new Particle();
 			add(part);
 		}
 	}
@@ -27,31 +24,43 @@ class ParticleGroup extends FlxSpriteGroup
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		for(part in members)
-		{
-			if(part.y > FlxG.height || part.y < -part.height || part.x > FlxG.width || part.x < -part.width)
-				renewParticle(part);
-		
-			// making it not go offscreen
-			if(part.y > FlxG.height)
-				part.y = -part.height;
-			if(part.y < -part.height)
-				part.y = FlxG.height;
-			// same for X
-			if(part.x > FlxG.width)
-				part.x = -part.width;
-			if(part.x < -part.width)
-				part.x = FlxG.width;
-		}
-		
 		color = isDay ? FlxColor.fromRGB(173,253,255) : FlxColor.fromRGB(236,157,0);
 		visible = SaveData.trueSettings.get('Particles');
 	}
+}
+
+// single particle
+class Particle extends FlxSprite
+{
+	public function new()
+	{
+		super(FlxG.random.int(0, FlxG.width), FlxG.random.int(0, FlxG.height));
+		makeGraphic(4, 4, FlxColor.WHITE);
+		pixelPerfectPosition = true;
+		antialiasing = false;
+		velocity.x = FlxG.random.float(-1, 1) * 30;
+		velocity.y = FlxG.random.float(-1, 1) * 30;
+		renewParticle();
+	}
 	
-	public function renewParticle(part:FlxSprite)
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+		if(y > FlxG.height || y < -height || x > FlxG.width || x < -width)
+			renewParticle();
+		
+		// making it not go offscreen
+		if(y > FlxG.height) y = -height;
+		if(y < -height)		y = FlxG.height;
+		// same for X
+		if(x > FlxG.width) 	x = -width;
+		if(x < -width)		x = FlxG.width;
+	}
+	
+	public function renewParticle()
 	{
 		var newSize:Int = FlxG.random.int(4, 12);
-		part.setGraphicSize(newSize, newSize);
-		part.updateHitbox();
+		setGraphicSize(newSize, newSize);
+		updateHitbox();
 	}
 }

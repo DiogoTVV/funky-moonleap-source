@@ -2,6 +2,7 @@ package;
 
 import lime.utils.Assets;
 import meta.state.PlayState;
+import flixel.util.FlxColor;
 
 using StringTools;
 
@@ -104,7 +105,7 @@ class CoolUtil
 		return dumbArray;
 	}
 	
-	public static function getIconColor(char:String = 'bf'):flixel.util.FlxColor
+	public static function getIconColor(char:String = 'bf'):FlxColor
 	{
 		// green
 		var cc:Array<Int> = [0,255,0];
@@ -128,6 +129,11 @@ class CoolUtil
 			case 'face': cc = [161,161,161];
 		}
 		
-		return flixel.util.FlxColor.fromRGB(cc[0],cc[1],cc[2]);
+		return arrayToColor(cc);
+	}
+	
+	public static function arrayToColor(cc:Array<Int>):FlxColor
+	{
+		return FlxColor.fromRGB(cc[0],cc[1],cc[2]);
 	}
 }

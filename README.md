@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://media.discordapp.net/attachments/1014315289153904734/1098632917929959514/image0.gif" width="400"/></a>
+  <img src="https://media.discordapp.net/attachments/1014315289153904734/1098632917929959514/image0.gif" width="220"/></a>
   <h1 align="center">Funky Moonleap</h1>
   <h2 align="center">a mod of an indie game about another indie game</h2>
 </p>
@@ -41,5 +41,3 @@ If you just want to download the mod go [Here](https://gamebanana.com/mods/37872
 * added 1 song (Leap)
 * added playable kids
 * added moon boy
-
-AND MORE!
