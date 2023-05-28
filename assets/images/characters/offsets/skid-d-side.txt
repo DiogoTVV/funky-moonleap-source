@@ -1,9 +1,13 @@
-singRIGHTmiss 53 -7
+deathLoop -60 -176
 singDOWN 50 -67
+singRIGHTmiss 53 -7
 singUP 45 60
 singLEFTmiss 80 0
+deathConfirm 64 -176
+firstDeath 100 111
+hey 0 0
 idle 0 0
 singDOWNmiss 57 -60
 singRIGHT 38 0
-singUPmiss 50 58
 singLEFT 91 3
+singUPmiss 50 58

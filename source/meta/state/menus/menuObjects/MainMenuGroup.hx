@@ -28,6 +28,8 @@ class MainMenuGroup extends MusicBeatGroup
 		
 		//if(Init.debugMode)
 		//	optionShit.insert(optionShit.length - 1, 'debug menu');
+		if(GlobalMenuState.realClock != null)
+			optionShit.insert(3, "< clock >");
 		
 		menuItems = new FlxTypedGroup<FlxText>();
 		add(menuItems);
@@ -69,7 +71,25 @@ class MainMenuGroup extends MusicBeatGroup
 				GlobalMenuState.nextMenu = new MainMenuGroup();
 				alive = false;
 			}*/
-			
+			if(optionShit[curSelected] == "< clock >")
+			{
+				GlobalMenuState.realClock.moving = (controls.UI_LEFT || controls.UI_RIGHT);
+				if(GlobalMenuState.realClock.moving)
+				{
+					GlobalMenuState.realClock.curTime += (elapsed * 2 * 60) * (controls.UI_LEFT ? -1 : 1);
+					//trace("time is: " + GlobalMenuState.realClock.curTime);
+				}
+			}
+			if(SaveData.trueSettings.get('Finished'))
+			{
+				if(FlxG.keys.justPressed.NUMPADMULTIPLY)
+				{
+					selectedSomething = true;
+					WarningState.curWarning = ENDING;
+					Main.switchState(new WarningState());
+				}
+			}
+
 			if(controls.ACCEPT)
 			{
 				selectedSomething = true;

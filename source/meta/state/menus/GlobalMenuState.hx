@@ -9,6 +9,7 @@ import meta.MusicBeat.MusicBeatState;
 import meta.data.Highscore;
 import meta.state.menus.menuObjects.*;
 import gameObjects.userInterface.ParticleGroup;
+import gameObjects.userInterface.RealClock;
 
 class GlobalMenuState extends MusicBeatState
 {
@@ -16,6 +17,7 @@ class GlobalMenuState extends MusicBeatState
 	public static var nextMenu:MusicBeatGroup = null;
 	var curMenu:MusicBeatGroup = null;
 	
+	public static var realClock:RealClock;
 	public static var gameLogo:FlxSprite;
 	
 	override function create()
@@ -68,13 +70,14 @@ class GlobalMenuState extends MusicBeatState
 		gameLogo.screenCenter(X);
 		add(gameLogo);
 		
+		realClock = null;
 		if(Highscore.getHighscore('leap-(d-side-mix)').score > 0
 		&& SaveData.trueSettings.get('Locked Songs').contains('midnight-secrets'))
 		{
-			var clock = new gameObjects.userInterface.RealClock();
-			clock.x = FlxG.width - clock.width;
-			clock.y = FlxG.height - clock.height;
-			add(clock);
+			realClock = new RealClock();
+			realClock.x = FlxG.width - realClock.width;
+			realClock.y = FlxG.height - realClock.height;
+			add(realClock);
 		}
 		
 		var watermark = new FlxText(0, 0, 0, "Funky Moonleap v2.1 - [Doido Engine v2.0]");

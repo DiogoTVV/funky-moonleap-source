@@ -187,7 +187,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					ground.color = front.color = 0xFF534078;
 				
 			case 'midnight-day' | 'midnight-night':
-				PlayState.defaultCamZoom = 1.2;
+				PlayState.defaultCamZoom = 1.05; // 1.2
 				PlayState.assetModifier = 'pixel';
 				
 				var bg = new FlxSprite().loadGraphic(Paths.image('backgrounds/midnight/' + (curStage.endsWith('day') ? 'fundo-day' : 'fundo-night')));
@@ -362,7 +362,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				dad.x += 320;
 				boyfriend.x += 375;
 				
-				//gf.setPosition(dad.x, dad.y);
 				gf.visible = false;
 				boyfriend.charData.camOffsets[0] = 150;
 				
@@ -370,7 +369,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				gf.visible = false;
 				
 				var pY:Float = (72 * 8);
-				//var pX:Float = (80 * 8);
 				var pX:Float = (85 * 8);
 				
 				dad.y = pY - dad.height;
@@ -395,9 +393,6 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					boyfriend.animOffsets[anim][0] -= 180;
 			
 			case 'devlog':
-				//dad.charData.camOffsets[1] -= 200;
-				//boyfriend.charData.camOffsets[1] += 200;
-				//boyfriend.charData.charZoom = 0.1;
 				gf.visible = false;
 				
 			case 'leap-(d-side-mix)':
@@ -486,11 +481,12 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					});
 				}
 				
-				// it should be minX:-312.5 // maxX:1292.5 // minY:-107 // maxY:827
+				// it should be loopin' inside the hud
 				if(SaveData.trueSettings.get("Controller Mode"))
 				{
-					devlogCursor.x = FlxMath.wrap(Math.floor(devlogCursor.x), -312,1292);
-					devlogCursor.y = FlxMath.wrap(Math.floor(devlogCursor.y), -107,827);
+					devlogCursor.x = FlxMath.wrap(Math.floor(devlogCursor.x), -1400, 2365);
+					devlogCursor.y = FlxMath.wrap(Math.floor(devlogCursor.y), -1170, 2095);
+			
 				}
 		}
 	}

@@ -27,6 +27,7 @@ class WarningState extends MusicBeatState
 		bg.screenCenter();
 		add(bg);
 		
+		// its easier than creating two separate classes that do basically the same thing
 		var mizera:String = '';
 		switch(curWarning)
 		{
@@ -36,14 +37,22 @@ class WarningState extends MusicBeatState
 				mizera += "\nIf you are sensible to those,\nmake sure to disable them at the acessibility options!";
 				
 			case ENDING:
-				mizera += 'thanks for playing';
-				mizera += '\n\nyou have completed all the songs\nin funky moonleap';
-				mizera += '\n\nnow try pressing 7 or 8 on\nmidnight secrets for a surprise!';
+				mizera += 'Congrats, you have completed all the songs in Funky Moonleap';
+				mizera += '\n\nConsider checking out Moonleap\navailable for Windows, Android, IOS and Nintendo Switch';
+
+				if(!SaveData.trueSettings.get('Controller Mode'))
+					mizera += '\n\n(Press 7 or 8 while playing "Midnight Secrets"';
+				else
+					mizera += '\n\n(Press one of the joysticks\nwhile playing "Midnight Secrets"';
+
+				mizera += '\nto see each version of the song)';
+				mizera += '\n\nThanks for Playing!!';
+				
 				SaveData.trueSettings.set('Finished', true);
 				SaveData.saveSettings();
 				
 			default:
-				mizera = "this is a blank warning lol";
+				mizera = "looks like someone\ndidn't properly set the warning";
 		}
 		
 		var text = new FlxText(0, 150, 0, mizera);
@@ -58,7 +67,7 @@ class WarningState extends MusicBeatState
 		switch(curWarning)
 		{
 			default:
-				if(controls.ACCEPT)
+				if(controls.ACCEPT || controls.BACK)
 				{
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 					GlobalMenuState.spawnMenu = 'title';

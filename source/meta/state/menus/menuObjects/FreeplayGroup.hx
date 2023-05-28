@@ -29,10 +29,6 @@ class FreeplayGroup extends MusicBeatGroup
 	static var curSelected:Int = 0;
 	static var curRow:Int = 0;
 	// score stuff
-	/*var lerpScore:Int = 0;
-	var intendedScore:Int = 0;
-	var lerpAccuracy:Float = 0;
-	var intendedAccuracy:Float = 0;*/
 	var curScore:Array<Int> = [0,0];
 	var curAccuracy:Array<Float> = [0,0];
 	var curMisses:Array<Int> = [0,0];
@@ -57,9 +53,11 @@ class FreeplayGroup extends MusicBeatGroup
 			if(SaveData.trueSettings.get('Locked Songs').contains(i))
 			{
 				if(i == 'midnight-secrets'
-				&& moonDate.getHours() == 0 && moonDate.getMinutes() <= 5
+				//&& moonDate.getHours() == 0 && moonDate.getMinutes() <= 5
 				&& Highscore.getHighscore('leap-(d-side-mix)').score > 0)
 				{
+					var curTime = (GlobalMenuState.realClock == null ? 0 : GlobalMenuState.realClock.curTime);
+					if((curTime >= 1440 - 10) || (curTime >= 0 && curTime <= 10))
 					continue;
 				}
 				
@@ -136,6 +134,7 @@ class FreeplayGroup extends MusicBeatGroup
 		
 		changeSelected(false);
 		changeRow(false);
+		placeBox(true);
 	}
 	
 	var placeX:Float = 0;
@@ -263,11 +262,14 @@ class FreeplayGroup extends MusicBeatGroup
 		changeSelected(playSound);
 	}
 	
-	function placeBox()
+	function placeBox(?instant:Bool = false)
 	{
 		// placing the box
 		placeX = getMid(menuItems.members[curSelected + (3 * curRow)], "X");
 		placeY = getMid(menuItems.members[curSelected + (3 * curRow)], "Y");
+
+		if(instant)
+			selectSquare.setPosition(placeX, placeY);
 	}
 	
 	function getMid(object:FlxSprite, whichWay:String = "X")

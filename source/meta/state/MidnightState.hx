@@ -36,6 +36,7 @@ class MidnightState extends MusicBeatState
 		
 		clock = new RealClock();
 		clock.screenCenter();
+		clock.visible = false;
 		clock.alpha = 0;
 		add(clock);
 		
@@ -45,11 +46,11 @@ class MidnightState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		if(FlxG.keys.justPressed.ANY)
+		if(controls.ACCEPT || controls.BACK)
 		{
 			if(curLine >= dialogue.length - 1)
 			{
-				//Sys.exit(0);
+				//Sys.exit(0); // sorry chip
 				GlobalMenuState.spawnMenu = 'title';
 				Main.switchState(new GlobalMenuState());
 			}
@@ -89,7 +90,11 @@ class MidnightState extends MusicBeatState
 				clock.y = text.y + text.height + 30 - 10;
 				FlxTween.tween(clock, {y: clock.y + 10, alpha: 1}, 0.8, {
 					ease: FlxEase.cubeOut,
-					startDelay: 0.8 + 0.3
+					startDelay: 0.8 + 0.3,
+					onUpdate: function(twn:FlxTween) {
+						if(!clock.visible)
+							clock.visible = true;
+					}
 				});
 		}
 	}

@@ -136,4 +136,20 @@ class CoolUtil
 	{
 		return FlxColor.fromRGB(cc[0],cc[1],cc[2]);
 	}
+
+	// FlxMath.wrap but with floats
+	public static function wrapFloat(val:Float, valMin:Float, valMax:Float):Float
+	{
+		// now its dumb-proof (if valMin is bigger it inverts them)
+		if(valMin > valMax)
+		{
+			var oldMin = valMin;
+			valMin = valMax;
+			valMax = oldMin;
+		}
+
+		if(val < valMin) val = valMax;
+		if(val > valMax) val = valMin;
+		return val;
+	}
 }

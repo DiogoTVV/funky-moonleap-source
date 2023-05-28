@@ -20,7 +20,7 @@ class OptionsSubstate extends MusicBeatSubState
 	private var submenuoffsetGroup:FlxTypedGroup<FlxBasic>;
 
 	private var offsetTemp:Float;
-
+	
 	// the controls class thingy
 	override public function create():Void
 	{

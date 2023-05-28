@@ -54,7 +54,7 @@ class PlayState extends MusicBeatState
 {
 	public static var startTimer:FlxTimer;
 	
-	//public static var curStage:String = ''; // curStage is inside stageBuild now
+	// curStage is inside stageBuild now
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
@@ -269,8 +269,6 @@ class PlayState extends MusicBeatState
 		boyfriend.setCharacter(750, 850, SONG.player1);
 		// if you want to change characters later use setCharacter() instead of new or it will break
 		
-		var camPos:FlxPoint = new FlxPoint(boyfriend.getMidpoint().x - 200, boyfriend.getMidpoint().y - 100);
-		
 		stageBuild.repositionPlayers(boyfriend, dadOpponent, gf);
 		stageBuild.dadPosition(boyfriend, dadOpponent, gf);
 		
@@ -321,15 +319,10 @@ class PlayState extends MusicBeatState
 		// generate the song
 		generateSong(SONG.song);
 
-		// set the camera position to the center of the stage
-		//camPos.set(gf.x + (gf.frameWidth / 2), gf.y + (gf.frameHeight / 2) + gf.charData.camOffsets[1]);
-		camPos.set(gf.x + (gf.width / 2) + gf.charData.camOffsets[0], gf.y + (gf.height / 2) + gf.charData.camOffsets[1]);
-		
 		// create the game camera
 		camFollow = new FlxObject(0, 0, 1, 1);
-		camFollow.setPosition(camPos.x, camPos.y);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
-		camFollowPos.setPosition(camPos.x, camPos.y);
+		followCamera(dadOpponent, true);
 		// check if the camera was following someone previously
 		if (prevCamFollow != null)
 		{
@@ -690,9 +683,15 @@ class PlayState extends MusicBeatState
 						}
 			}
 		}
+		switch(SONG.song.toLowerCase())
+		{
+			case "leap-(d-side-mix)":
+				elapsedtime += elapsed * Conductor.crochet / 32;
+				leapdside_noteside = Math.sin(elapsedtime);// * 1.1;
+		}
 		
-		if (health > 2)
-			health = 2;
+		//if (health > 2) health = 2;
+		health = FlxMath.bound(health, 0, 2);
 		
 		// dialogue checks
 		if (dialogueBox != null && dialogueBox.alive)
@@ -720,12 +719,16 @@ class PlayState extends MusicBeatState
 			if(controls.PAUSE && startedCountdown && canPause)
 				pauseGame();
 			
+			var pressDebug:Array<Bool> = [FlxG.keys.justPressed.SEVEN,FlxG.keys.justPressed.EIGHT];
+			if(SaveData.trueSettings.get('Controller Mode') && FlxG.gamepads.firstActive != null)
+				pressDebug = [FlxG.gamepads.firstActive.justPressed.LEFT_STICK_CLICK,
+								FlxG.gamepads.firstActive.justPressed.RIGHT_STICK_CLICK];
+
 			switch(SONG.song.toLowerCase())
 			{
 				case 'midnight-secrets':
 					if(Highscore.getHighscore('midnight-secrets').score > 0)
 					{
-						var pressDebug:Array<Bool> = [FlxG.keys.justPressed.SEVEN,FlxG.keys.justPressed.EIGHT];
 						if(pressDebug.contains(true))
 						{
 							if(pressDebug[0] && storyDifficulty != 1)
@@ -749,7 +752,8 @@ class PlayState extends MusicBeatState
 					}
 					
 				default:
-					if(FlxG.keys.justPressed.EIGHT)
+					// char editor or whatever
+					if(pressDebug[1])
 					{
 						resetMusic();
 						
@@ -757,8 +761,8 @@ class PlayState extends MusicBeatState
 						Main.switchState(new OffsetEditorState());
 					}
 					
-					// charting state (more on that later)
-					if(FlxG.keys.justPressed.SEVEN)
+					// charting state
+					if(pressDebug[0])
 					{
 						resetMusic();
 						if (FlxG.keys.pressed.SHIFT)
@@ -810,7 +814,7 @@ class PlayState extends MusicBeatState
 			// boyfriend.playAnim('singLEFT', true);
 			// */
 
-			if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
+			if(generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 			{
 				curSection = Std.int(curStep / 16);
 				if (curSection != lastSection)
@@ -828,16 +832,11 @@ class PlayState extends MusicBeatState
 				switch(SONG.song.toLowerCase())
 				{
 					case 'midnight-secrets':
-						followCamera(dadOpponent);
+						followCamera(dadOpponent, true);
 					
 					default:
 						if(!forceCamFollow)
-						{
-							if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
-								followCamera(dadStrums.character);
-							else
-								followCamera(boyfriendStrums.character);
-						}
+							defaultFollowCamera();
 				}
 			}
 			
@@ -892,7 +891,7 @@ class PlayState extends MusicBeatState
 	}
 	
 	// making it easier to control the camera
-	function followCamera(?char:Character, ?customX:Float = 0, ?customY:Float = 0)
+	function followCamera(?char:Character, ?customX:Float = 0, ?customY:Float = 0, ?instant:Bool = false)
 	{
 		if(char == null) {
 			camFollow.setPosition(customX, customY);
@@ -907,9 +906,20 @@ class PlayState extends MusicBeatState
 			getCenterX + camDisplaceX + (char.charData.camOffsets[0] * (char.isPlayer ? -1 : 1)),
 			getCenterY + camDisplaceY +  char.charData.camOffsets[1]
 		);
+
+		if(instant) camFollowPos.setPosition(camFollow.x, camFollow.y);
 		
 		// makes zooming for characters easier
 		forceZoom[0] = char.charData.charZoom;
+	}
+
+	function defaultFollowCamera(?instant:Bool = false)
+	{
+		if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
+			followCamera(dadStrums.character, instant);
+		else
+			followCamera(boyfriendStrums.character, instant);
+
 	}
 	
 	public var isDead:Bool = false;
@@ -945,12 +955,19 @@ class PlayState extends MusicBeatState
 				persistentDraw = false;
 				
 				resetMusic();
-				
+
+				// dumb fix but it works ig
+				for(i in  ["", "End"])
+				{
+					var preloadDeathMusic = new FlxSound().loadEmbedded(Paths.music('gameOver$i'), false, false);
+					preloadDeathMusic.play();
+					preloadDeathMusic.pause();
+				}
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 				
 				//FlxG.sound.play(Paths.sound('fnf_loss_sfx' + GameOverSubstate.stageSuffix));
 				var deathSound:String = 'skid';
-				for(char in ['pump', 'luano'])
+				for(char in ['pump', 'luano', 'skid-d-side'])
 					if(boyfriend.curCharacter.startsWith(char))
 						deathSound = char;
 				
@@ -984,6 +1001,9 @@ class PlayState extends MusicBeatState
 		}
 	}
 	
+	var elapsedtime:Float = 0;
+	var leapdside_noteside:Float = 0;
+
 	function noteCalls()
 	{
 		// reset strums
@@ -1020,11 +1040,13 @@ class PlayState extends MusicBeatState
 					var psuedoY:Float = (downscrollMultiplier * -((Conductor.songPosition - daNote.strumTime) * (0.45 * roundedSpeed)));
 					var psuedoX = 25 + daNote.noteVisualOffset;
 					
+					var canModchart:Bool = !SaveData.trueSettings.get("Baby Mode");
+
 					// funny curly notes
-					if(SONG.song.toLowerCase() == "leap-(d-side-mix)")
+					if(SONG.song.toLowerCase() == "leap-(d-side-mix)" && canModchart)
 					{
 						if(blackBars.enabled && curStep < 2560)
-							psuedoX += Math.sin((Conductor.songPosition - daNote.strumTime) / 150) * (daNote.mustPress ? 50 : -50);
+							psuedoX += Math.sin((Conductor.songPosition - daNote.strumTime) / 150) * (daNote.mustPress ? 50 : -50) * leapdside_noteside;
 					}
 					
 					daNote.y = receptorPosY
@@ -1223,12 +1245,12 @@ class PlayState extends MusicBeatState
 				characterStrums.receptors.members[coolNote.noteData].playAnim('confirm', true);
 
 			// special thanks to sam, they gave me the original system which kinda inspired my idea for this new one
-			if (canDisplayJudgement)
+			if(canDisplayJudgement)
 			{
 				// get the note ms timing
 				var noteDiff:Float = Math.abs(coolNote.strumTime - Conductor.songPosition);
 				// get the timing
-				if (coolNote.strumTime < Conductor.songPosition)
+				if(coolNote.strumTime < Conductor.songPosition)
 					ratingTiming = "late";
 				else
 					ratingTiming = "early";
@@ -1857,6 +1879,8 @@ class PlayState extends MusicBeatState
 	
 	function changeScrollSpeed(newSpeed:Float = 2.8, time:Null<Float> = null)
 	{
+		if(SaveData.trueSettings.get("Baby Mode")) return;
+
 		if(time == null) time = getBeatSec() * 2;
 		
 		if(songSpeedTween != null) songSpeedTween.cancel();
@@ -1890,7 +1914,7 @@ class PlayState extends MusicBeatState
 	{
 		super.beatHit();
 		
-		if ((FlxG.camera.zoom < 1.35 && curBeat % 4 == 0) && (!SaveData.trueSettings.get('Reduced Movements')))
+		if(curBeat % 4 == 0)
 			camZoom();
 		
 		if(curStep % 16 == 0)
@@ -2384,10 +2408,10 @@ class PlayState extends MusicBeatState
 					changeCharZoom(); // 0.7
 					boyfriend.charData.camOffsets[0] += 250;
 				
-				case 1424:
+				case 256 | 1424:
 					changeCharZoom(0.15);
 					blackBars.enabled = true;
-				case 1552:
+				case 384 | 1552:
 					changeCharZoom();
 					blackBars.enabled = false;
 			}
@@ -2417,7 +2441,7 @@ class PlayState extends MusicBeatState
 				case 128:
 					camZoom(0.4, 0.1);
 					flashCamera(camGame, getBeatSec() * 4);
-				case 640|1280|1920|2176|2720|2848|2976|3040|3104|3232:
+				case 640|1920|2176|2720|2848|2976|3232:
 					camZoom(0.1, 0.05);
 					flashCamera(camGame, getBeatSec() * 3);
 					blackBars.enabled = false;
@@ -2436,8 +2460,6 @@ class PlayState extends MusicBeatState
 				case 2464:
 					changeCharZoom();
 					blackBars.enabled = true;
-				/*case 3488:
-					FlxTween.tween(PlayState, {defaultCamZoom: 1.2}, (262.54 - 251));*/
 				case 3616:
 					defaultCamZoom = 0.7;
 					flashCamera(camGame, getBeatSec() * 12);
@@ -2453,7 +2475,7 @@ class PlayState extends MusicBeatState
 			}
 			if(curStep >= 3488 && curStep < 3616)
 			{
-				defaultCamZoom += (0.05) / 4;
+				defaultCamZoom += (1.2 - 0.7) / (3616 - 3488);
 			}
 		}
 		
@@ -2527,7 +2549,7 @@ class PlayState extends MusicBeatState
 				{
 					//trace('era pra mudar');
 					curDevlogColor = FlxMath.wrap(curDevlogColor + 1, 0, devlogColors.length - 1);
-					FlxTween.color(sunHopEffect, getStepSec() * 3, sunHopEffect.color, CoolUtil.arrayToColor(devlogColors[curDevlogColor]));
+					FlxTween.color(sunHopEffect, (getStepSec() * 8) * 0.95, sunHopEffect.color, CoolUtil.arrayToColor(devlogColors[curDevlogColor]));
 				}
 			}
 		}
@@ -2536,10 +2558,10 @@ class PlayState extends MusicBeatState
 		{
 			switch(curStep)
 			{
-				case 1012 | 2806: // 1008
+				case 1012 | 2804: // 1008
 					swapDayNight(false);
-				
-				case 2036: // 2036
+
+				case 2040: // 2036
 					swapDayNight(true);
 			}
 			switch(curStep)
@@ -2720,6 +2742,8 @@ class PlayState extends MusicBeatState
 	
 	private function camZoom(gameZoom:Float = 0.015, ?hudZoom:Float = 0.05)
 	{
+		if(SaveData.trueSettings.get('Reduced Movements')) return;
+
 		camGame.zoom += gameZoom;
 		camHUD.zoom += hudZoom;
 		for(hud in strumHUD)

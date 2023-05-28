@@ -23,7 +23,6 @@ class RealClock extends FlxSpriteGroup
 		super();
 		clockColor = new FlxSprite().loadGraphic(Paths.image(location + 'clock back'));
 		add(clockColor);
-		updateColors(0);
 		
 		clockHandle = new FlxSprite().loadGraphic(Paths.image(location + 'clock hand'));
 		clockHandle.flipX = true;
@@ -39,35 +38,59 @@ class RealClock extends FlxSpriteGroup
 			obj.setGraphicSize(Std.int(obj.width * 4));
 			obj.updateHitbox();
 		}
+
+		setByRealTime();
+		updateColors(true);
 	}
 	
+	// (curTime is in minutes) 720 = 12 hours
 	public var curTime:Float = 0;
+
+	public var moving:Bool = false;
 	
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		
-		var moonDate = Date.now();
-		updateColors(moonDate.getHours());
-		// gets the current minute
-		curTime = moonDate.getMinutes();
-		for(i in 0...moonDate.getHours()) // and it adds 60 minutes for each hour
-			curTime += 60;
-		
+		if(!moving)
+		{
+			// simulates an actual clock when not adjusting it
+			curTime += elapsed / 60;
+		}
+		//setByRealTime();
+		curTime = CoolUtil.wrapFloat(curTime, 0, 720 * 2);
+		updateColors();
+
 		// updating the handle
 		var angularTime:Float = FlxMath.remapToRange(curTime, 0, 720, 0, 360);
 		
 		clockHandle.angle = angularTime;
-		
-		// updating the colors angles
 		clockColor.angle = angularTime;
 	}
 	
-	public function updateColors(hour:Int)
+	public function setByRealTime()
 	{
-		if((hour >= 18 && hour < 24) || (hour >= 0 && hour < 6))
-			clockColor.color = FlxColor.fromRGB(85,0,170);
+		var moonDate = Date.now();
+		// gets the current minute
+		curTime = moonDate.getMinutes();
+		for(i in 0...moonDate.getHours()) // and it adds 60 minutes for each hour
+			curTime += 60;
+	}
+
+	public function updateColors(?instant:Bool = false)
+	{
+		var hour:Float = FlxMath.remapToRange(curTime, 0, 720, 0, 12);
+		//trace("hour: " + hour);
+		var daColor:FlxColor;
+
+		if((hour >= 18 && hour <= 24) || (hour >= 0 && hour < 6))
+			daColor = FlxColor.fromRGB(85,0,170);
 		else
-			clockColor.color = FlxColor.fromRGB(0,170,255);
+			daColor = FlxColor.fromRGB(0,170,255);
+
+		if(instant)
+			clockColor.color = daColor;
+		else
+			flixel.tweens.FlxTween.color(clockColor, 0.25, clockColor.color, daColor);
 	}
 }

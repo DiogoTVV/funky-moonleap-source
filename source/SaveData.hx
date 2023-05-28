@@ -4,25 +4,25 @@ import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
 import flixel.util.FlxSave;
-import openfl.filters.BitmapFilter;
-import openfl.filters.ColorMatrixFilter;
+import meta.data.ColorBlindFilterManager;
 import meta.Overlay;
 
 using StringTools;
 
 /** 
-	Enumerator for settingtypes
+	Enumerator for SettingTypes
 	
-	Checkmark: 	Bool setting
-	Selector:  	Int and Array<String> setting
-	SaveData:  	Dynamic, but resets to default by "reset save data" on the options menu, so be careful!!
-				(tip: you can just leave it empty if you dont want it to reset, just like Offset does)
+	Checkmark:		Bool setting
+	Selector:  		Int and Array<String> setting
+	ProgressData:	Dynamic, but resets to default by "reset save data" on the options menu, so be careful!!
+
+	*empty*:		Dynamic, but can't be set into options menu normally
 **/
 enum SettingTypes
 {
 	Checkmark;
 	Selector;
-	SaveData;
+	ProgressData;
 }
 class SaveData
 {
@@ -38,12 +38,14 @@ class SaveData
 	public static var gameSettings:Map<String, Dynamic> = [
 		'Finished' => [
 			false,
-			SaveData,
+			ProgressData,
 		],
 		'Locked Songs' => [
 			['sun-hop', 'devlog', 'leap-(d-side-mix)', 'midnight-secrets'],
-			SaveData,
+			ProgressData,
 		],
+
+
 		'Fullscreen' => [
 			true,
 			Checkmark,
@@ -54,6 +56,18 @@ class SaveData
 			Checkmark,
 			'Whether to have little particles on the menu.'
 		],
+
+		'Baby Mode' => [
+			false,
+			Checkmark,
+			'Whether to disable Modcharts\n(scroll speed changes also disables).'
+		],
+		'Reduced Movements' => [
+			false,
+			Checkmark,
+			"Whether to reduce movements, like icons bouncing or beat zooms in gameplay."
+		],
+
 		'Show Clock' => [
 			true,
 			Checkmark,
@@ -89,11 +103,6 @@ class SaveData
 			false,
 			Checkmark,
 			'Whether to display information like your game state.',
-		],
-		'Reduced Movements' => [
-			false,
-			Checkmark,
-			'Whether to reduce movements, like icons bouncing or beat zooms in gameplay.',
 		],
 		'Stage Opacity' => [
 			100,
@@ -132,12 +141,12 @@ class SaveData
 			'none',
 			Selector,
 			'Choose a filter for colorblindness.',
-			['none', 'Deuteranopia', 'Protanopia', 'Tritanopia']
+			['none', 'protanopia', 'protanomaly', 'deuteranopia', 'deuteranomaly', 'tritanopia', 'tritanomaly', 'achromatopsia', 'achromatomaly']
 		],
 		"Clip Style" => [
 			'stepmania',
 			Selector,
-			"Chooses a style for hold note clippings\nStepMania: Holds under strumline // FNF: Holds over strumline",
+			"Chooses a style for hold note clippings\nStepMania: Holds under strumline\nFNF: Holds over strumline",
 			['stepmania', 'fnf']
 		],
 		"UI Skin" => [
@@ -196,37 +205,6 @@ class SaveData
 		'BACK' =>	[[X,				FlxKey.BACKSPACE,	FlxKey.ESCAPE], 12],
 		'PAUSE' => 	[[P,				FlxKey.ENTER,		FlxKey.ESCAPE], 13],
 		'RESET' => 	[[R, null],	 											14],
-	];
-	
-	public static var filters:Array<BitmapFilter> = []; // the filters the game has active
-	public static var gameFilters:Map<String, {filter:BitmapFilter, ?onUpdate:Void->Void}> = [
-		"Deuteranopia" => {
-			var matrix:Array<Float> = [
-				0.43, 0.72, -.15, 0, 0,
-				0.34, 0.57, 0.09, 0, 0,
-				-.02, 0.03,    1, 0, 0,
-				   0,    0,    0, 1, 0,
-			];
-			{filter: new ColorMatrixFilter(matrix)}
-		},
-		"Protanopia" => {
-			var matrix:Array<Float> = [
-				0.20, 0.99, -.19, 0, 0,
-				0.16, 0.79, 0.04, 0, 0,
-				0.01, -.01,    1, 0, 0,
-				   0,    0,    0, 1, 0,
-			];
-			{filter: new ColorMatrixFilter(matrix)}
-		},
-		"Tritanopia" => {
-			var matrix:Array<Float> = [
-				0.97, 0.11, -.08, 0, 0,
-				0.02, 0.82, 0.16, 0, 0,
-				0.06, 0.88, 0.18, 0, 0,
-				   0,    0,    0, 1, 0,
-			];
-			{filter: new ColorMatrixFilter(matrix)}
-		}
 	];
 	
 	public static function loadSettings():Void
@@ -326,17 +304,7 @@ class SaveData
 		
 		FlxG.fullscreen = trueSettings.get("Fullscreen");
 		
-		///*
-		filters = [];
-		var theFilter:String = trueSettings.get('Colorblind Filter');
-		if (gameFilters.get(theFilter) != null)
-		{
-			var realFilter = gameFilters.get(theFilter).filter;
-
-			if (realFilter != null)
-				filters.push(realFilter);
-		}
-		FlxG.game.setFilters(filters);
+		ColorBlindFilterManager.reload();
 		
 		if (FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;

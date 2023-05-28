@@ -36,12 +36,7 @@ class BlackBars extends FlxSpriteGroup
 		var daY = (item.ID == 0) ? -item.height - 20 : FlxG.height + 20;
 		
 		if(enabled)
-		{
-			if(item.ID == 0)
-				daY += 20 + 150;
-			else
-				daY -= 20 + 150;
-		}
+			daY += (20 + 170) * (item.ID == 0 ? 1 : -1);
 		
 		return daY;
 	}

@@ -42,6 +42,7 @@ class OptionsGroup extends MusicBeatGroup
 				'adjust offset',
 				'reset save data',
 			],
+
 			// actual options
 			"preferences" => [
 				// pfv alguem me mata
@@ -67,10 +68,12 @@ class OptionsGroup extends MusicBeatGroup
 			],
 			"accessibility" => [
 				"Flashing Lights",
-				'Colorblind Filter',
+				"Reduced Movements",
 				'Camera Note Movement',
-				"Stage Opacity",
 				"Particles",
+				"Baby Mode",
+				'Colorblind Filter',
+				"Stage Opacity",
 			],
 		];
 		

@@ -96,13 +96,23 @@ class Character extends FNFSprite
 				animation.addByPrefix('idle', 'idle0', 24, false);
 				if(curCharacter == 'skid')
 				{
+					// skid exclusive anims
 					animation.addByPrefix('spooky-dance', 'idle alt0', 24, true);
-					animation.addByPrefix('hey', 'hey0',  24, false);
+				}
+				else
+				{
+					// skid d-side exclusive anims
+					animation.addByPrefix('firstDeath', 		'death start', 	24, false);
+					animation.addByPrefix('deathLoop',			'death loop',	24, true);
+					animation.addByPrefix('deathConfirm',   	'death end',   	24, false);
+					animation.addByIndices('deathConfirmPost', 	'death end', 	[34,35,36,37,38,39], "", 24, true);
 				}
 				animation.addByPrefix('singLEFT', 'left0', 24, false);
 				animation.addByPrefix('singRIGHT','right0',24, false);
 				animation.addByPrefix('singUP',   'up0',   24, false);
 				animation.addByPrefix('singDOWN', 'down0', 24, false);
+
+				animation.addByPrefix('hey', 'hey0',  24, false);
 				
 				var missP:String = (curCharacter == 'skid') ? 'Miss' : ' miss';
 				
@@ -118,9 +128,9 @@ class Character extends FNFSprite
 			case 'skid-dead':
 				frames = Paths.getSparrowAtlas('characters/$curCharacter');
 				
-				animation.addByPrefix('firstDeath', 'death start', 24, false);
-				animation.addByPrefix('deathLoop','death loop',24, true);
-				animation.addByPrefix('deathConfirm',   'death end',   24, false);
+				animation.addByPrefix('firstDeath', 	'death start', 	24, false);
+				animation.addByPrefix('deathLoop',		'death loop',	24, true);
+				animation.addByPrefix('deathConfirm',   'death end',   	24, false);
 				
 				playAnim('firstDeath');
 				
@@ -568,7 +578,8 @@ class Character extends FNFSprite
 					y = FlxMath.lerp(y, daY - height, elapsed * 8);
 			}
 			
-			// Post idle animation (think Week 4 and how the player and mom's hair continues to sway after their idle animations are done!)
+			// Post animation
+			// (think Week 4 and how the player and mom's hair continues to sway after their idle animations are done!)
 			var postAnim:String = animation.curAnim.name + 'Post';
 			if(animation.curAnim.finished && animation.getByName(postAnim) != null)
 			{

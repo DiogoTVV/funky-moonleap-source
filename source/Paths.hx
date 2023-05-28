@@ -22,15 +22,6 @@ class Paths
 	// Return the paths of assets and call on those assets as well.
 	inline public static var SOUND_EXT = "ogg";
 
-	// level we're loading
-	static var currentLevel:String;
-
-	// set the current level top the condition of this function if called
-	static public function setCurrentLevel(name:String)
-	{
-		currentLevel = name.toLowerCase();
-	}
-
 	// stealing my own code from psych engine
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
 	public static var currentTrackedTextures:Map<String, Texture> = [];
@@ -40,17 +31,21 @@ class Paths
 	{
 		if (!dumpExclusions.contains(key))
 			dumpExclusions.push(key);
+		else
+			trace('$key is already excluded from dump lol');
 	}
 
 	public static var dumpExclusions:Array<String> = [
-		'assets/music/freakyMenu.$SOUND_EXT',
-		'assets/music/foreverMenu.$SOUND_EXT',
-		'assets/music/breakfast.$SOUND_EXT',
-		//'assets/images/UI/default/transition.png',
+		// sounds
+		'gameOver',
+		'gameOverEnd',
+		'breakfast',
+
+		// images
 		'UI/default/transition',
 	];
 
-	/// haya I love you for the base cache dump I took to the max
+	// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory()
 	{
 		// clear non local assets in the tracked assets list
@@ -76,7 +71,7 @@ class Paths
 						openfl.Assets.cache.removeBitmapData(key);
 						FlxG.bitmap._cache.remove(key);
 					}
-					trace('removed $key, ' + (isTexture ? 'is a texture' : 'is not a texture'));
+					trace('removed $key, ' + (isTexture ? 'was a texture' : 'was not a texture'));
 					obj.destroy();
 					currentTrackedAssets.remove(key);
 					counter++;
@@ -168,30 +163,11 @@ class Paths
 	//
 	inline public static function getPath(file:String, type:AssetType, ?library:Null<String>)
 	{
-		/*
-				Okay so, from what I understand, this loads in the current path based on the level
-				we're in (if a library is not specified), say like week 1 or something, 
-				then checks if the assets you're looking for are there.
-				if not, it checks the shared assets folder.
-			// */
-
 		// well I'm rewriting it so that the library is the path and it looks for the file type
 		// later lmao I don't really wanna rn
 
 		if (library != null)
 			return getLibraryPath(file, library);
-
-		/*
-			if (currentLevel != null)
-			{
-				levelPath = getLibraryPathForce(file, currentLevel);
-				if (OpenFlAssets.exists(levelPath, type))
-					return levelPath;
-
-				levelPath = getLibraryPathForce(file, "shared");
-				if (OpenFlAssets.exists(levelPath, type))
-					return levelPath;
-		}*/
 
 		var levelPath = getLibraryPathForce(file, "mods");
 		if (OpenFlAssets.exists(levelPath, type))

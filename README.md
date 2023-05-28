@@ -25,17 +25,21 @@ If you just want to download the mod go [Here](https://gamebanana.com/mods/37872
 # Changelog:
 
 ## v2.1.0
+* added more acessibility options
 * full-on gamepad support (activate Controller Mode in settings to check it out)
 * gamepad keybinds guide on the options menu
-* added "hey" sprites for every playable character
+* added taunt and death sprites for every playable character
+* changed the way to unlock some songs
 * bug fixes
+* removed god-z
 
 ## v2.0.0
 * ported the mod over to Doido Engine (a Forever Engine Fork)
-* new menus inspired by Moonleap's beta menus
+* new menus inspired by Moonleap's 0.6 menu
 * added 6 new songs (and a remake of the v1 song)
 * unique backgrounds for each song
 * remade sprites for v1 characters
+* removed herobrine
 
 ## v1.0.0
 * added 1 song (Leap)

@@ -84,10 +84,12 @@ class DeleteSaveSubstate extends MusicBeatSubState
 				if(clicked <= 0)
 				{
 					trace('deleted lol');
-					// only resets save data info and not your settings
+					// only resets progress data info and not your settings
 					for (setting in SaveData.gameSettings.keys())
-						if(SaveData.gameSettings.get(setting)[1] == SaveData.SettingTypes.SaveData)
+						if(SaveData.gameSettings.get(setting)[1] == SaveData.SettingTypes.ProgressData)
 							SaveData.trueSettings.set(setting, SaveData.gameSettings.get(setting)[0]);
+
+					SaveData.saveSettings();
 					// bye highscores
 					Highscore.highscoreMap = [];
 					Highscore.save();

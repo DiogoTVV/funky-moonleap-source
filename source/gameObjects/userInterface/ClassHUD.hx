@@ -207,6 +207,8 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	
 	public function beatHit()
 	{
+		if(SaveData.trueSettings.get('Reduced Movements')) return;
+		
 		beated = !beated;
 		
 		var I_S:Array<Float> = [1.3, 0.8];
