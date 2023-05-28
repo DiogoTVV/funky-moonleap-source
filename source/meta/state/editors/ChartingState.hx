@@ -107,7 +107,7 @@ class ChartingState extends MusicBeatState
 		Well aren't you a lucky one!
 		Redeem me on Steam!
 		Hope you're not too late tho
-		188.949.42.95.51
+		D29EX-BFXFW-JBJFB
 		
 		also remember to post a screenshot of it on twitter and tag @moony_team
 	*/
