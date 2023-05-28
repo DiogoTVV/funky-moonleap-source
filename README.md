@@ -5,15 +5,15 @@
 </p>
 
 ----------------------------------------------
-## If you like this mod, make sure to check [Moonleap](https://store.steampowered.com/app/2166050/Moonleap/) by Guselect Productions.
+## If you like this mod, make sure to check out [Moonleap](https://store.steampowered.com/app/2166050/Moonleap/) by Guselect Productions.
 ----------------------------------------------
 These are the files to compile the mod!!
-If you just want to download the mod go [Here](https://gamebanana.com/mods/378720)
+If you just want to download the mod go [here](https://gamebanana.com/mods/378720)
 
 ### This mod contains:
 * New songs
 
-* Custom menus (inspired by the original game's beta version)
+* Custom menus (inspired by Moonleap's 0.6 menus)
 
 * Full Gamepad Support
 
@@ -35,7 +35,7 @@ If you just want to download the mod go [Here](https://gamebanana.com/mods/37872
 
 ## v2.0.0
 * ported the mod over to Doido Engine (a Forever Engine Fork)
-* new menus inspired by Moonleap's 0.6 menu
+* new menus (inspired by Moonleap's 0.6 menus)
 * added 6 new songs (and a remake of the v1 song)
 * unique backgrounds for each song
 * remade sprites for v1 characters
