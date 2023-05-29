@@ -190,11 +190,11 @@ class SaveData
 	
 	// this (kinda) sucks but im lazy to redo it and it works just fine so whatever
 	public static var gameControls:Map<String, Dynamic> = [
-		'LEFT' => 	[[A, FlxKey.LEFT], 		0],
-		'DOWN' => 	[[S, FlxKey.DOWN], 		1],
-		'UP' =>	  	[[W, FlxKey.UP],		2],
-		'RIGHT' => 	[[D, FlxKey.RIGHT], 	3],
-		'ACTION' => [[FlxKey.SPACE, null], 	4],
+		'LEFT' => 	[[A, FlxKey.LEFT], 				0],
+		'DOWN' => 	[[S, FlxKey.DOWN], 				1],
+		'UP' =>	  	[[W, FlxKey.UP],				2],
+		'RIGHT' => 	[[D, FlxKey.RIGHT], 			3],
+		'ACTION' => [[FlxKey.SPACE, FlxKey.NONE], 	4],
 		// 5
 		'UI_LEFT' =>[[A, FlxKey.LEFT], 		6],
 		'UI_DOWN' =>[[S, FlxKey.DOWN], 		7],
@@ -204,7 +204,7 @@ class SaveData
 		'ACCEPT' => [[FlxKey.SPACE, 	FlxKey.ENTER], 						11],
 		'BACK' =>	[[X,				FlxKey.BACKSPACE,	FlxKey.ESCAPE], 12],
 		'PAUSE' => 	[[P,				FlxKey.ENTER,		FlxKey.ESCAPE], 13],
-		'RESET' => 	[[R, null],	 											14],
+		'RESET' => 	[[R, 				FlxKey.NONE],	 					14],
 	];
 	
 	public static function loadSettings():Void
@@ -248,9 +248,8 @@ class SaveData
 			{
 				label = label.replace('note_', '');
 				
-				var onlyOnes:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT', 'RESET'];
 				for(i in gameControls.keys())
-					if(i.toLowerCase() == label && onlyOnes.contains(label.toUpperCase()))
+					if(i.toLowerCase() == label)
 					{
 						importControls.set(i, [key, gameControls.get(i)[1]]);
 						trace('imported controls/$i from psych');
@@ -260,17 +259,11 @@ class SaveData
 			{
 				if(importControls.get(label) == null)
 					importControls.set(label, key);
-				else
-				{
-					var bruh = importControls.get(label)[0];
-					if(label == 'RESET' && bruh.length == 1)
-						importControls.get(label)[0][1] = FlxKey.R;
-				}
 			}
 			gameControls = importControls;
 			return saveControls();
 		}
-		
+
 		if ((FlxG.save.data.gameControls != null) && (Lambda.count(FlxG.save.data.gameControls) == Lambda.count(gameControls)))
 			gameControls = FlxG.save.data.gameControls;
 		

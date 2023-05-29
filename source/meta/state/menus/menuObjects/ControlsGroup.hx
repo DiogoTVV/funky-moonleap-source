@@ -101,7 +101,7 @@ class ControlsGroup extends MusicBeatGroup
 	private function getStringKey(arrayThingy:Dynamic):String
 	{
 		var keyString:String = 'none';
-		if (arrayThingy != null)
+		if(arrayThingy != null && arrayThingy != FlxKey.NONE)
 		{
 			var keyDisplay:FlxKey = arrayThingy;
 			keyString = keyDisplay.toString();
@@ -138,7 +138,7 @@ class ControlsGroup extends MusicBeatGroup
 			if(FlxG.keys.justPressed.BACKSPACE)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
-				changeKey(null);
+				changeKey(FlxKey.NONE);
 			}
 			
 			if(FlxG.keys.justPressed.UP)
