@@ -4,3 +4,10 @@ APIStuff.hx
 mods/
 docs/legacy-docs/_build
 exclude/
+
+source/moonleap/data
+source/moonleap/gameObjects/Block.hx
+source/moonleap/gameObjects/Background.hx
+source/moonleap/MoonLevelEditor.hx
+source/moonleap/MoonPlayState.hx
+source/moonleap/readme.txt
