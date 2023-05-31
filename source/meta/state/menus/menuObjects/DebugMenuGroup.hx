@@ -12,7 +12,7 @@ import meta.data.*;
 
 class DebugMenuGroup extends MusicBeatGroup
 {
-	var optionShit:Array<String> = ["chart editor", "character editor", "final cutscene"];//, "flixel moonleap editor"];
+	var optionShit:Array<String> = ["chart editor", "character editor", "final cutscene"];
 	static var curSelected:Int = 0;
 	
 	var menuItems:FlxTypedGroup<FlxText>;
@@ -89,10 +89,6 @@ class DebugMenuGroup extends MusicBeatGroup
 					case 'final cutscene':
 						FlxG.sound.music.stop();
 						Main.switchState(new MidnightState());
-					
-					case 'flixel moonleap editor':
-						//trace('its not even ready');
-						Main.switchState(new moonleap.MoonPlayState());
 				}
 				
 				alive = false;

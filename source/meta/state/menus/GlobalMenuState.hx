@@ -52,7 +52,7 @@ class GlobalMenuState extends MusicBeatState
 			}
 			
 			// 2 luano tbm pq sim
-			var luano = new moonleap.gameObjects.Luano();
+			var luano = new moonleap.Luano();
 			luano.setPosition(((row == 0) ? 64 : 1152), 380);
 			luano.flipX = (row == 1);
 			add(luano);

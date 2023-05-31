@@ -5,7 +5,6 @@ import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
 import flixel.graphics.FlxGraphic;
-import moonleap.data.*;
 
 class Luano extends FlxSpriteGroup
 {
