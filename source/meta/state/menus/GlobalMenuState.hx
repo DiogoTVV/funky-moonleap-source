@@ -80,7 +80,7 @@ class GlobalMenuState extends MusicBeatState
 			add(realClock);
 		}
 		
-		var watermark = new FlxText(0, 0, 0, "Funky Moonleap v2.1 - [Doido Engine v2.0]");
+		var watermark = new FlxText(0, 0, 0, "Funky Moonleap v2.1.2 - [Doido Engine v2.0]");
 		watermark.setFormat(Main.gFont, 12, FlxColor.fromRGB(170,255,255), LEFT);
 		watermark.setPosition(5,FlxG.height - watermark.height - 5);
 		add(watermark);

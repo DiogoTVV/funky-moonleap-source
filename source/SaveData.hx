@@ -34,6 +34,7 @@ class SaveData
 		2 - description (for the options menu)
 		3 - bounds [min, max] or [option1, option2, option3] (if setting type is selector)
 	*/
+	public static var loaded:Bool = false;
 	public static var trueSettings:Map<String, Dynamic> = [];
 	public static var gameSettings:Map<String, Dynamic> = [
 		'Finished' => [
@@ -47,7 +48,7 @@ class SaveData
 
 
 		'Fullscreen' => [
-			true,
+			false,
 			Checkmark,
 			'Makes the game fullscreen.'
 		],
@@ -233,6 +234,8 @@ class SaveData
 		saveSettings();
 		
 		updateAll();
+		loaded = true;
+		FlxG.fullscreen = SaveData.trueSettings.get("Fullscreen");
 	}
 	
 	public static function loadControls():Void
@@ -295,7 +298,7 @@ class SaveData
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
 		#end
 		
-		FlxG.fullscreen = trueSettings.get("Fullscreen");
+		//FlxG.fullscreen = trueSettings.get("Fullscreen");
 		
 		ColorBlindFilterManager.reload();
 		

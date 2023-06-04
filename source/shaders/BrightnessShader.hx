@@ -34,9 +34,9 @@ class BrightnessShaderData extends FlxShader
 		}
 		else
 		{
-			float daR = color.r + brightness;
-			float daG = color.g + brightness;
-			float daB = color.b + brightness;
+			float daR = color.r + ((1 - color.r) * brightness);
+			float daG = color.g + ((1 - color.g) * brightness);
+			float daB = color.b + ((1 - color.b) * brightness);
 			
 			gl_FragColor = vec4(daR, daG, daB, color.a);
 		}

@@ -157,6 +157,9 @@ class OptionsGroup extends MusicBeatGroup
 					checkmark.updateValue(!checkmark.value);
 					SaveData.trueSettings.set(optionShit[curCategory][curSelected], checkmark.value);
 					SaveData.saveSettings();
+
+					if(optionShit[curCategory][curSelected] == "Fullscreen")
+						FlxG.fullscreen = SaveData.trueSettings.get("Fullscreen");
 				}
 			}
 		}

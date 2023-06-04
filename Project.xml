@@ -3,7 +3,7 @@
 	
 	<!-- _________________________ Application Settings _________________________ -->
 	
-	<app title="Funky Moonleap" file="Funky Moonleap" packageName="com.diogotv.funkymoonleap" package="com.diogotv.funkymoonleap" main="Main" version="2.0.0" company="DiogoTV" />
+	<app title="Funky Moonleap" file="Funky Moonleap" packageName="com.diogotv.funkymoonleap" package="com.diogotv.funkymoonleap" main="Main" version="2.1.2" company="DiogoTV" />
 	
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->

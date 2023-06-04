@@ -103,14 +103,7 @@ class ChartingState extends MusicBeatState
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
-	/*
-		Well aren't you a lucky one!
-		Redeem me on Steam!
-		Hope you're not too late tho
-		D29EX-BFXFW-JBJFB
-		
-		also remember to post a screenshot of it on twitter and tag @moony_team
-	*/
+	
 	override function create()
 	{
 		super.create();
