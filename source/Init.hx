@@ -23,6 +23,9 @@ class Init extends MusicBeatState
 {
 	override function create():Void
 	{
+    #if android
+    FlxG.android.preventDefaultKeys = [BACK];
+    #end
 		// check SaveData.hx to add options!!
 		FlxG.save.bind('funkymoonleap-savedata', 'Funky-Moonleap');
 		SaveData.loadSettings();

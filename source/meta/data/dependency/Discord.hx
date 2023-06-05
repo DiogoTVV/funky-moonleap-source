@@ -1,6 +1,6 @@
-#if desktop
 package meta.data.dependency;
 
+#if desktop
 #if DISCORD_RPC
 import discord_rpc.DiscordRpc;
 #end
