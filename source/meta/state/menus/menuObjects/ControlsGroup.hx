@@ -35,7 +35,7 @@ class ControlsGroup extends MusicBeatGroup
 		super();
 		groupName = 'controls';
 		
-		#if !html5
+		#if desktop
 		Discord.changePresence('CONTROLS', 'Main Menu');
 		#end
 		
@@ -204,6 +204,10 @@ class ControlsGroup extends MusicBeatGroup
 					changeVertical(change, false);
 			}
 		}
+		
+		#if mobile
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 		
 		changeHorizontal();
 	}

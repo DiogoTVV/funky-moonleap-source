@@ -23,8 +23,7 @@
 	<!--Desktop-specific-->
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
-	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" />
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!-- _____________________________ Custom Defines ____________________________ -->
 
@@ -47,6 +46,7 @@
 	<assets path="assets/songs" />
 	<assets path="assets/music" preload="true" />
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
+	<assets path="mobile" rename="assets/mobile" if="mobile" />
 
 	<!--<assets path="mods" />-->
 
@@ -57,7 +57,7 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
-	<haxelib name="discord_rpc" if="DISCORD_RPC" />
+	<haxelib name="discord_rpc" if="DISCORD_RPC || desktop" />
 	<haxelib name="hxcpp-debug-server" if="debug" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
@@ -71,7 +71,7 @@
 	<!--Disable the Flixel core debugger. Automatically gets set whenever you compile in release mode!-->
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 
-	<!-- Make's the game use less ram -->
+	<!--Allow working memory greater than 1 Gig-->
 	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
 	<!--Enable this for Nape release builds for a serious peformance improvement-->

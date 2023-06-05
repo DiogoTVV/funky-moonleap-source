@@ -22,7 +22,7 @@ class MainMenuGroup extends MusicBeatGroup
 		super();
 		groupName = GlobalMenuState.spawnMenu = 'main-menu';
 		
-		#if !html5
+		#if desktop
 		Discord.changePresence('MAIN MENU', 'Main Menu');
 		#end
 		
@@ -48,6 +48,11 @@ class MainMenuGroup extends MusicBeatGroup
 			//menuItem.alpha = 0;
 			//flixel.tweens.FlxTween.tween(menuItem, {alpha: 1}, 0.5, {ease: flixel.tweens.FlxEase.expoOut});
 		}
+		
+		#if mobile
+		addVirtualPad(UP_DOWN, A_B);
+		#end
+		
 		changeSelection();
 	}
 	

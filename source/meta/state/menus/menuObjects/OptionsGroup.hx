@@ -91,6 +91,10 @@ class OptionsGroup extends MusicBeatGroup
 		description.setFormat(Main.gFont, 18, FlxColor.fromRGB(173,253,255), CENTER);
 		add(description);
 		
+	  #if mobile
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
+		
 		// actually reloading it
 		changeCategory('main');
 	}

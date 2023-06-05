@@ -28,6 +28,18 @@ class TitleGroup extends MusicBeatGroup
         add(titleTexts);
 	}
 	
+		#if mobile
+    var justTouched:Bool = false;
+    
+	  for (touch in FlxG.touches.list)
+	{
+		if (touch.justPressed)
+	 {
+    justTouched = true;
+	}
+	 }
+  #end
+	
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -35,7 +47,7 @@ class TitleGroup extends MusicBeatGroup
 		if(FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if(controls.ACCEPT)
+		if(controls.ACCEPT #if mobile || justTouched #end)
 			endItAll();
 	}
 	

@@ -42,6 +42,11 @@ class GameOverSubstate extends MusicBeatSubState
 		
 		super();
 		
+		#if mobile
+    addVirtualPad(NONE, A_B);
+    addVirtualPadCamera();
+    #end
+		
 		Conductor.songPosition = 0;
 		
 		var bg = new FlxSprite().makeGraphic(FlxG.width * 4, FlxG.height * 4, FlxColor.fromRGB(34,12,43));

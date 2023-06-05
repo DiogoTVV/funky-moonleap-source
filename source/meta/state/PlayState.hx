@@ -120,7 +120,7 @@ class PlayState extends MusicBeatState
 	
 	public var blackBars:BlackBars;
 	
-	public static var camHUD:FlxCamera;
+	public static var :FlxCamera;
 	public static var camGame:FlxCamera;
 	public static var dialogueHUD:FlxCamera;
 	
@@ -213,18 +213,18 @@ class PlayState extends MusicBeatState
 		camGame = new FlxCamera();
 
 		// create the hud camera (separate so the hud stays on screen)
-		camHUD = new FlxCamera();
-		camHUD.bgColor.alpha = 0;
+		 = new FlxCamera();
+		.bgColor.alpha = 0;
 
 		FlxG.cameras.reset(camGame);
-		FlxG.cameras.add(camHUD, false);
-		allUIs.push(camHUD);
+		FlxG.cameras.add(, false);
+		allUIs.push();
 		FlxG.cameras.setDefaultDrawTarget(camGame, true);
 		
 		var darknessHUD:FlxSprite = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		darknessHUD.alpha = (100 - SaveData.trueSettings.get('Stage Opacity')) / 100;
 		darknessHUD.scrollFactor.set();
-		darknessHUD.cameras = [camHUD];
+		darknessHUD.cameras = [];
 		darknessHUD.screenCenter();
 		add(darknessHUD);
 		
@@ -362,7 +362,7 @@ class PlayState extends MusicBeatState
 			strumHUD[i] = new FlxCamera();
 			strumHUD[i].bgColor.alpha = 0;
 
-			strumHUD[i].cameras = [camHUD];
+			strumHUD[i].cameras = [];
 			allUIs.push(strumHUD[i]);
 			FlxG.cameras.add(strumHUD[i], false);
 			// set this strumline's camera to the designated camera
@@ -375,18 +375,23 @@ class PlayState extends MusicBeatState
 		popUpCombo(true);
 		
 		blackBars = new BlackBars();
-		blackBars.cameras = [camHUD];
+		blackBars.cameras = [];
 		add(blackBars);
 		
 		uiHUD = new ClassHUD();
 		add(uiHUD);
-		uiHUD.cameras = [camHUD];
+		uiHUD.cameras = [];
 		//
 
 		// create a hud over the hud camera for dialogue
 		dialogueHUD = new FlxCamera();
 		dialogueHUD.bgColor.alpha = 0;
 		FlxG.cameras.add(dialogueHUD, false);
+		
+		#if android
+		addMobileControls();
+		mobileControls.visible = true;
+		#end
 
 		//
 		keysArray = [
@@ -697,16 +702,27 @@ class PlayState extends MusicBeatState
 		if (dialogueBox != null && dialogueBox.alive)
 		{
 			// wheee the shift closes the dialogue
-			if (FlxG.keys.justPressed.SHIFT)
+			if (FlxG.keys.justPressed.SHIFT #if android FlxG.android.justReleased.BACK #end)
 				dialogueBox.closeDialog();
 			
 			// the change I made was just so that it would only take accept inputs
+			var justTouched:Bool = false;
+
+			for (touch in FlxG.touches.list)
+			{
+				justTouched = false;
+				
+				if (touch.justReleased)
+					justTouched = true;
+			}
+			if (justTouched && dialogueBox.textStarted)
+			#else
 			if (controls.ACCEPT && dialogueBox.textStarted)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				dialogueBox.curPage += 1;
 				
-				if (dialogueBox.curPage == dialogueBox.dialogueData.dialogue.length)
+				if (DialogueBox.curPage == dialogueBox.dialogueData.dialogue.length)
 					dialogueBox.closeDialog()
 				else
 					dialogueBox.updateDialog();
@@ -716,7 +732,7 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 		{
 			// pause the game if the game is allowed to pause and enter is pressed
-			if(controls.PAUSE && startedCountdown && canPause)
+			if(controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 				pauseGame();
 			
 			var pressDebug:Array<Bool> = [FlxG.keys.justPressed.SEVEN,FlxG.keys.justPressed.EIGHT];
@@ -1622,7 +1638,7 @@ class PlayState extends MusicBeatState
 			if (SaveData.trueSettings.get('Fixed Judgements'))
 			{
 				if (!cache)
-					numScore.cameras = [camHUD];
+					numScore.cameras = [];
 				numScore.y += 50;
 			}
 			numScore.x += 100;
@@ -1718,7 +1734,7 @@ class PlayState extends MusicBeatState
 		}
 		else // yess ratings near notes >:]
 		{
-			rating.cameras = [camHUD];
+			rating.cameras = [];
 			rating.x = 25 + ratingStrum.x + (Note.swagWidth / 2) - (rating.width / 2);
 			
 			rating.y = ratingStrum.y;
@@ -2110,7 +2126,7 @@ class PlayState extends MusicBeatState
 					-FlxG.height * FlxG.camera.zoom).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
 				blackShit.scrollFactor.set();
 				add(blackShit);
-				camHUD.visible = false;
+				.visible = false;
 
 				// oooo spooky
 				FlxG.sound.play(Paths.sound('Lights_Shut_off'));
@@ -2150,7 +2166,7 @@ class PlayState extends MusicBeatState
 				var blackScreen:FlxSprite = new FlxSprite().makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
 				add(blackScreen);
 				blackScreen.scrollFactor.set();
-				camHUD.visible = false;
+				.visible = false;
 
 				new FlxTimer().start(0.1, function(tmr:FlxTimer)
 				{
@@ -2163,7 +2179,7 @@ class PlayState extends MusicBeatState
 
 					new FlxTimer().start(0.8, function(tmr:FlxTimer)
 					{
-						camHUD.visible = true;
+						.visible = true;
 						remove(blackScreen);
 						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, 2.5, {
 							ease: FlxEase.quadInOut,
@@ -2274,7 +2290,7 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
 
-		camHUD.visible = true;
+		.visible = true;
 		
 		var soundFolder:String = 'countdown/default/';
 		
@@ -2316,7 +2332,7 @@ class PlayState extends MusicBeatState
 				countSprite.scale.set(0.8,0.8);
 				countSprite.updateHitbox();
 				countSprite.scrollFactor.set();
-				countSprite.cameras = [camHUD];
+				countSprite.cameras = [];
 				add(countSprite);
 				
 				countSprite.screenCenter();
@@ -2592,7 +2608,7 @@ class PlayState extends MusicBeatState
 			{
 				case 144:
 					var pressMidnight = new gameObjects.background.MidnightButton();
-					pressMidnight.cameras = [camHUD];
+					pressMidnight.cameras = [];
 					add(pressMidnight);
 			}
 		}
@@ -2745,7 +2761,7 @@ class PlayState extends MusicBeatState
 		if(SaveData.trueSettings.get('Reduced Movements')) return;
 
 		camGame.zoom += gameZoom;
-		camHUD.zoom += hudZoom;
+		.zoom += hudZoom;
 		for(hud in strumHUD)
 			hud.zoom += hudZoom;
 	}

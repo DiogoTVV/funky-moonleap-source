@@ -21,7 +21,7 @@ class MidnightState extends MusicBeatState
 	var dialogue:Array<String> = [
 		"There is still something left",
 		"for you to play",
-		"ill tell you at midnight",
+		"ill tell you at midnight", // meia noite eu te conto 
 	];
 	
 	override function create()
@@ -39,6 +39,10 @@ class MidnightState extends MusicBeatState
 		clock.visible = false;
 		clock.alpha = 0;
 		add(clock);
+		
+		#if mobile
+    addVirtualPad(NONE, A_B);
+    #end
 		
 		readLine();
 	}
