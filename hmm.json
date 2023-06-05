@@ -14,15 +14,15 @@
 			"type":"haxelib",
 			"version":"9.1.0"
 		},
-		{
 			"name":"flixel",
-			"type":"haxelib",
-			"version":"4.11.0"
-		},
+			"type":"git",
+			"ref":"main",
+			"url":"https://github.com/MateuzinhoX02/flixell"
 		{
 			"name":"flixel-addons",
-			"type":"haxelib",
-			"version":"2.11.0"
+			"type":"git",	
+			"ref":"dev",
+			"url":"https://github.com/HaxeFlixel/flixel-addons"
 		},
 		{
 			"name":"flixel-ui",
