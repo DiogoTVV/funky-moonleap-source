@@ -702,11 +702,11 @@ class PlayState extends MusicBeatState
 		if (dialogueBox != null && dialogueBox.alive)
 		{
 			// wheee the shift closes the dialogue
-			if (FlxG.keys.justPressed.SHIFT)
+			if (FlxG.keys.justPressed.SHIFT #if android || FlxG.android.justReleased.BACK #end)
 				dialogueBox.closeDialog();
 			
 			// the change I made was just so that it would only take accept inputs
-			if (FlxG.keys.justPressed.SHIFT #if android FlxG.android.justReleased.BACK #end)
+			if (FlxG.keys.justPressed.SHIFT)
 				dialogueBox.closeDialog();
 			
 			// the change I made was just so that it would only take accept inputs
