@@ -67,7 +67,7 @@ class CoolUtil
 		var libraryArray:Array<String> = [];
 
 		#if sys
-		var unfilteredLibrary = Assets.list().filter(text -> text.contains('$subDir/$library'))
+		var unfilteredLibrary = Assets.list().filter(text -> text.contains('$subDir/$library'));
 
 		for (folder in unfilteredLibrary)
 		{
