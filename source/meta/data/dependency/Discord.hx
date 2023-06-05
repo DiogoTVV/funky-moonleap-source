@@ -1,3 +1,4 @@
+#if desktop
 package meta.data.dependency;
 
 #if DISCORD_RPC
@@ -77,3 +78,4 @@ class Discord
 	}
 	#end
 }
+#end

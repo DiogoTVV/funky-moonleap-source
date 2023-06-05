@@ -67,11 +67,11 @@ class CoolUtil
 		var libraryArray:Array<String> = [];
 
 		#if sys
-		var unfilteredLibrary = FileSystem.readDirectory('$subDir/$library');
+		var unfilteredLibrary = Assets.list().filter(text -> text.contains('$subDir/$library'))
 
 		for (folder in unfilteredLibrary)
 		{
-			if (!folder.contains('.'))
+			if (!folder.startsWith('.'))
 				libraryArray.push(folder);
 		}
 		trace(libraryArray);
