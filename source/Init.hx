@@ -27,7 +27,8 @@ class Init extends MusicBeatState
     FlxG.android.preventDefaultKeys = [BACK];
     #end
 		// check SaveData.hx to add options!!
-		FlxG.save.bind('funkymoonleap-savedata', 'Funky-Moonleap');
+		//FlxG.save.bind('funkymoonleap-savedata', 'Funky-Moonleap');
+		FlxG.save.bind('funkymoonleep-savedata', getSavePath());
 		SaveData.loadSettings();
 		SaveData.loadControls();
 		Highscore.load();
@@ -59,6 +60,14 @@ class Init extends MusicBeatState
 		}
 		else
 			Main.switchState(new GlobalMenuState());
+	}
+	
+	public static function getSavePath():String {
+		@:privateAccess //galakxisne
+			//roubei do modboa msm, to nem aí
+		return #if (flixel < "5.0.0") 'Funky-Moonleap' #else FlxG.stage.application.meta.get('company')
+			+ '/'
+			+ FlxSave.validate(FlxG.stage.application.meta.get('file')) #end;
 	}
 	
 	// idk why did i put it here but yeah
