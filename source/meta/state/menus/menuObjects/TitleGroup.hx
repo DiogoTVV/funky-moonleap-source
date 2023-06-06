@@ -28,17 +28,22 @@ class TitleGroup extends MusicBeatGroup
         add(titleTexts);
 	}
 	
-		#if mobile
-    var justTouched:Bool = false;
-    
-	  for (touch in FlxG.touches.list)
+public static function justTouched():Bool //Copiado do Hsys k
 	{
-		if (touch.justPressed)
-	 {
-    justTouched = true;
+		#if (flixel && android)
+		var justTouched:Bool = false;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+				justTouched = true;
+		}
+
+		return justTouched;
+		#else
+		return FlxG.mouse.justPressed; //Isso aqui é mais válido pro modboa mas né?
+		#end
 	}
-	 }
-  #end
 	
 	override function update(elapsed:Float)
 	{
@@ -47,7 +52,7 @@ class TitleGroup extends MusicBeatGroup
 		if(FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 
-		if(controls.ACCEPT #if mobile || justTouched #end)
+		if(justTouched())
 			endItAll();
 	}
 	
