@@ -27,7 +27,7 @@ class HealthIcon extends FlxSprite
 		if (trimmedCharacter.contains('-'))
 			trimmedCharacter = trimmedCharacter.substring(0, trimmedCharacter.lastIndexOf('-'));
 		
-		if(!Assets.exists(Paths.getPath('images/icons/icon-' + char + '.png', IMAGE)))
+		if(!lime.utils.Assets.exists(Paths.getPath('images/icons/icon-' + char + '.png', IMAGE)))
 		{
 			if (char != trimmedCharacter)
 				return updateIcon(trimmedCharacter, isPlayer);
@@ -41,7 +41,7 @@ class HealthIcon extends FlxSprite
 		else
 			antialiasing = SaveData.trueSettings.get('Antialiasing');
 		
-		if(Assets.exists(Paths.getPath('images/icons/icon-' + char + '.xml', TEXT)))
+		if(lime.utils.Assets.exists(Paths.getPath('images/icons/icon-' + char + '.xml', TEXT)))
 		{
 			frames = Paths.getSparrowAtlas('icons/icon-' + char);
 			
