@@ -242,7 +242,16 @@ class SaveData
 	{
 		// stealing your controls from psych engine lol
 		var psychSave = new flixel.util.FlxSave();
-		psychSave.bind("controls_v2", "ShadowMario/PsychEngine/ninjamuffin99");
+		//psychSave.bind("controls_v2", "ShadowMario/PsychEngine/ninjamuffin99");
+		psychSave.bind("controls_v2", salvar());
+		
+		public static function salvar():String {
+		@:privateAccess //galakxisne
+		return #if (flixel < "5.0.0") 'ShadowMario/PsychEngine/ninjamuffin99' #else FlxG.stage.application.meta.get('company')
+			+ '/'
+			+ FlxSave.validate(FlxG.stage.application.meta.get('file')) #end;
+	}
+		
 		if(FlxG.save.data.gameControls == null && psychSave.data.customControls != null)
 		{
 			var importControls:Map<String, Dynamic> = [];
