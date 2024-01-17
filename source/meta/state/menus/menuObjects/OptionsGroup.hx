@@ -159,7 +159,7 @@ class OptionsGroup extends MusicBeatGroup
 					SaveData.saveSettings();
 
 					if(optionShit[curCategory][curSelected] == "Fullscreen")
-						FlxG.fullscreen = SaveData.trueSettings.get("Fullscreen");
+						SaveData.fullscreen = SaveData.trueSettings.get("Fullscreen");
 				}
 			}
 		}

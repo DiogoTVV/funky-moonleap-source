@@ -4,6 +4,9 @@ import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
 import flixel.math.FlxMath;
 import flixel.util.FlxSave;
+
+import openfl.display.StageDisplayState;
+
 import meta.data.ColorBlindFilterManager;
 import meta.Overlay;
 
@@ -235,7 +238,7 @@ class SaveData
 		
 		updateAll();
 		loaded = true;
-		FlxG.fullscreen = SaveData.trueSettings.get("Fullscreen");
+		SaveData.fullscreen = SaveData.trueSettings.get("Fullscreen");
 	}
 	
 	public static function loadControls():Void
@@ -278,7 +281,6 @@ class SaveData
 		// ez save lol
 		FlxG.save.data.settings = trueSettings;
 		FlxG.save.flush();
-
 		updateAll();
 	}
 	
@@ -298,7 +300,7 @@ class SaveData
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
 		#end
 		
-		//FlxG.fullscreen = trueSettings.get("Fullscreen");
+		//SaveData.fullscreen = trueSettings.get("Fullscreen");
 		
 		ColorBlindFilterManager.reload();
 		
@@ -312,7 +314,17 @@ class SaveData
 	{
 		if(trueSettings.get('Locked Songs').contains(daSong))
 			trueSettings.get('Locked Songs').remove(daSong);
-		
 		saveSettings();
+	}
+
+	public static var fullscreen(default, set):Bool;
+	static function set_fullscreen(Value:Bool):Bool
+	{
+		if(SaveData.loaded)
+		{
+			SaveData.trueSettings.set('Fullscreen', Value);
+			SaveData.saveSettings();
+		}
+		return FlxG.fullscreen = Value;
 	}
 }
