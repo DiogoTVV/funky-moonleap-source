@@ -47,7 +47,7 @@ class OptionsGroup extends MusicBeatGroup
 			"preferences" => [
 				// pfv alguem me mata
 				'Downscroll',
-				'Middlescroll',
+				'Middlescroll', // eu sei onde você mora diogo -crowplexus
 				'Ghost Tapping',
 				'Controller Mode',
 				'Display Accuracy',

@@ -48,6 +48,8 @@
 	<assets path="assets/music" preload="true" />
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
 
+	<assets path="art/icon16.png" rename="icon.png" if="linux || mac" />
+
 	<!--<assets path="mods" />-->
 
 	<!-- _______________________________ Libraries ______________________________ -->

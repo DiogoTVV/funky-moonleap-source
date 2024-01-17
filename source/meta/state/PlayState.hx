@@ -16,7 +16,7 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRandom;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets.FlxSoundAsset;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -361,8 +361,7 @@ class PlayState extends MusicBeatState
 			// generate a new strum camera
 			strumHUD[i] = new FlxCamera();
 			strumHUD[i].bgColor.alpha = 0;
-
-			strumHUD[i].cameras = [camHUD];
+			//strumHUD[i].cameras = [camHUD];
 			allUIs.push(strumHUD[i]);
 			FlxG.cameras.add(strumHUD[i], false);
 			// set this strumline's camera to the designated camera

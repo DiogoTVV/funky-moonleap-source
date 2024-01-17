@@ -85,6 +85,11 @@ class Main extends Sprite
 		framerate = 60;
 		#end
 
+		#if (linux || mac)
+		var icon = lime.graphics.Image.fromFile("icon.png");
+		openfl.Lib.current.stage.window.setIcon(icon);
+		#end
+
 		// simply said, a state is like the 'surface' area of the window where everything is drawn.
 		// if you've used gamemaker you'll probably understand the term surface better
 		// this defines the surface bounds
